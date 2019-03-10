@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -24,49 +25,56 @@ app.use(function(req, res, next) {
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
-app.use('/shoes',
+// app.use('/shoes',
+//   proxy({
+//     target: "http://127.0.0.1:8001",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use('/shoes/:shoeId',
+//   proxy({
+//     target: "http://127.0.0.1:8001",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use('/looks/:id',
+//   proxy({
+//     target: "http://127.0.0.1:8001",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use('/shares/:id',
+//   proxy({
+//     target: "http://127.0.0.1:8001",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use('/products/:model',
+//   proxy({
+//     target: "http://127.0.0.1:8002",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use('/images/:imageId',
+//   proxy({
+//     target: "http://127.0.0.1:8002",
+//     changeOrigin: true
+//   })
+// );
+
+app.use('/reviews/:id',
   proxy({
-    target: "http://127.0.0.1:8001",
+    target: "http://127.0.0.1:8003",
     changeOrigin: true
   })
 );
 
-app.use('/shoes/:shoeId',
-  proxy({
-    target: "http://127.0.0.1:8001",
-    changeOrigin: true
-  })
-);
-
-app.use('/looks/:id',
-  proxy({
-    target: "http://127.0.0.1:8001",
-    changeOrigin: true
-  })
-);
-
-app.use('/shares/:id',
-  proxy({
-    target: "http://127.0.0.1:8001",
-    changeOrigin: true
-  })
-);
-
-app.use('/products/:model',
-  proxy({
-    target: "http://127.0.0.1:8002",
-    changeOrigin: true
-  })
-);
-
-app.use('/images/:imageId',
-  proxy({
-    target: "http://127.0.0.1:8002",
-    changeOrigin: true
-  })
-);
-
-app.use('/reviews',
+app.use('/postreviews/323',
   proxy({
     target: "http://127.0.0.1:8003",
     changeOrigin: true
